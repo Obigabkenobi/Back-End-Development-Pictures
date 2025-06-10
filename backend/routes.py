@@ -69,7 +69,8 @@ def get_picture_by_id(id):
 def create_picture():
     if data:
         newData = request.get_json()
-
+        print(newData)
+        
         for picture in data:
             if picture['id'] == newData['id']:
                 return {"Message": f"picture with id {picture['id']} already present"}, 302
@@ -92,7 +93,7 @@ def update_picture(id):
         for x in data:
             if x['id'] == id:
                 x.update(newData)
-                return jsonify(x['pic_url']), 200
+                return jsonify(x['pic_url']), 201
 
     return {"message": "Picture not found"}, 404   
 
